@@ -18,8 +18,8 @@ from PyQt4 import QtGui, QtCore
 
 
 
-def place_button(editor, button):
-    editor.iconsBox.addWidget(button)   
+def place_button(editor, button, position):
+    editor.iconsBox.insertWidget(position, button)   
 
 def downArrow():
     if isWin:
@@ -35,7 +35,7 @@ def setup_buttons(editor):
         tooltip = u"Set secondary color ({})".format(shortcut.toString(QtGui.QKeySequence.NativeText))
         buttonSecondColor = Button("button_second_color", shortcut, tooltip,lambda: editor._wrapWithColour(editor.mw.pm.profile.get("lastSecondColour", "#0f0")), text=" ")
         setup_background_button(editor, buttonSecondColor)
-        place_button(editor, buttonSecondColor)
+        place_button(editor, buttonSecondColor, 12)
 
         shortcut = QtGui.QKeySequence(u"ctrl+F8")
         tooltip = u"Change secondary color ({})".format(shortcut.toString(QtGui.QKeySequence.NativeText))
@@ -46,7 +46,7 @@ def setup_buttons(editor):
                          # space is needed to center the arrow
                          text=downArrow())
         buttonSecondColorDown.setFixedWidth(16)
-        place_button(editor, buttonSecondColorDown)
+        place_button(editor, buttonSecondColorDown,13)
 
 
 
@@ -61,7 +61,7 @@ def change_color(self):
             self.fSecondcolour = new.name()
             self._wrapWithColour(self.fSecondcolour)
             self.mw.pm.profile['lastSecondColour'] = self.fSecondcolour
-            self.background_frame.setPalette(QtGui.QPalette(QtGui.QColor(self.fSecondcolour)))
+            self.fSecondcolour_frame.setPalette(QtGui.QPalette(QtGui.QColor(self.fSecondcolour)))
             # setup_background_button(self, button);
 
 
@@ -70,15 +70,15 @@ def setup_background_button(self, button):
         """
         Create the actual button that the user can click on.
         """
-        self.background_frame = QtGui.QFrame()
-        self.background_frame.setAutoFillBackground(True)
-        self.background_frame.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.fSecondcolour_frame = QtGui.QFrame()
+        self.fSecondcolour_frame.setAutoFillBackground(True)
+        self.fSecondcolour_frame.setFocusPolicy(QtCore.Qt.NoFocus)
         #self._on_bg_color_changed()
 
-        self.background_frame.setPalette(QtGui.QPalette(QtGui.QColor(self.mw.pm.profile.get("lastSecondColour", "#0f0"))))
+        self.fSecondcolour_frame.setPalette(QtGui.QPalette(QtGui.QColor(self.mw.pm.profile.get("lastSecondColour", "#0f0"))))
 
         hbox = QtGui.QHBoxLayout()
-        hbox.addWidget(self.background_frame)
+        hbox.addWidget(self.fSecondcolour_frame)
         hbox.setMargin(5)
         button.setLayout(hbox)
 
