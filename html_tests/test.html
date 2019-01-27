@@ -1,0 +1,54 @@
+<html>
+<head>
+	<style type="text/css">
+		.box {
+			border: 1px solid black;
+			width: fit-content;
+			padding: 10px;
+			border-radius: 5px;
+			margin: 5px;
+  			display: inline-block;
+		}
+
+		canvas#canv {
+			border: 1px solid green;
+
+		}
+
+	</style>
+	<script>
+		var c = document.getElementById("canv");
+		var ctx = c.getContext("2d");
+		ctx.moveTo(0,0);
+		ctx.lineTo(200,100);
+		ctx.stroke();
+	</script>
+
+
+<body>
+	<div id="source">
+		1asdasdas
+		2asdasdasdasdsdsdsdfgsd 
+		3asdasdas <div class='box'>
+			1csdcasdcas
+		</div> sdfgsdfg
+		4dsfasdf
+		5dasdsa <div class='box'>
+			2222dszdcs
+		</div>
+		6asdfasdfasdf
+		<div class='box'>
+			73dcsdcsdc
+		</div>
+
+		<div class='box'>
+			84sdsdcsdd
+		</div>
+		<canvas id="canv"></canvas>
+		
+
+	</div>
+
+
+</body>
+</html>
