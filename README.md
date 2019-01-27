@@ -1,2 +1,2 @@
 # anki_addons
-Addons tests for anki
+General addons for anki, usually, 1 file = 1 addon.
